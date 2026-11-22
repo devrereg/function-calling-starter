@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: function-calling-lab
+  # 프로젝트 루트의 .env 파일(KEY=VALUE 형식)을 설정으로 읽어 온다
+  config:
+    import: optional:file:.env[.properties]
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}   # .env 의 OPENAI_API_KEY 값
+      chat:
+        options:
+          model: gpt-4o-mini
+          temperature: 0       # 실습 결과를 최대한 재현 가능하게
+
+logging:
+  level:
+    com.example.fc: INFO
+    # Spring AI가 도구를 실행할 때 남기는 로그 (DefaultToolCallingManager)
+    org.springframework.ai.model.tool: DEBUG
