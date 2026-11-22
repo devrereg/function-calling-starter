@@ -17,7 +17,7 @@ public class OrderTools {
     }
 
 
-    public OrderStatusResult getOrderStatus(String orderId, String userId) {
+    public OrderStatusResult getOrderStatus(String orderId) {
 
         return orderRepository.findById(orderId)
                 .map(OrderStatusResult::from)
