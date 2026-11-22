@@ -1,6 +1,9 @@
 package com.example.fc.web;
 
 import com.example.fc.tool.OrderTools;
+
+import java.util.Map;
+
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +29,8 @@ public class ChatController {
                        @RequestHeader("X-User-Id") String userId) {
         return chatClient.prompt()
             .user(message)
+            .tools(orderTools)
+            .toolContext(Map.of("userId", userId))
             .call()
             .content();
     }
