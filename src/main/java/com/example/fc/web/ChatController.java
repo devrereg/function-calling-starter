@@ -24,6 +24,7 @@ public class ChatController {
     public String chat(@RequestParam @NonNull String message) {
         return chatClient.prompt()
             .user(message)
+            .tools(orderTools)
             .call()
             .content();
     }
